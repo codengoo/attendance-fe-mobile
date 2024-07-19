@@ -6,7 +6,7 @@ const appApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://669949882069c438cd71df70.mockapi.io' }),
     endpoints: (builder) => ({
         getConfig: builder.query<IAppConfig, any>({
-            query: () => `/appconfig/1`,
+            query: () => `/appconfig/2`,
         }),
     }),
 })

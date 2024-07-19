@@ -17,11 +17,15 @@ export const appSlice = createSlice({
         setAppConfig: (state, action: PayloadAction<IAppConfig>) => {
             state.language = action.payload.language;
             state.theme = action.payload.theme;
+        },
+
+        setTheme: (state, action: PayloadAction<ETheme>) => {
+            state.theme = action.payload;
         }
     }
 })
 
-export const { setAppConfig } = appSlice.actions;
+export const { setAppConfig, setTheme } = appSlice.actions;
 
 export const selectTheme = (state: RootState) => state.app.theme;
 export const selectLanguage = (state: RootState) => state.app.language;
