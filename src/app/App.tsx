@@ -5,18 +5,24 @@ import { store } from '../store';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { selectTheme, setAppConfig } from '../store/slices';
 import { useGetConfigQuery } from '../store/api';
+import SplashScreen from 'react-native-splash-screen';
 
 const Test = () => {
   const dispatch = useAppDispatch();
-  const { data } = useGetConfigQuery({});
+  const { data, isLoading } = useGetConfigQuery({});
   const theme = useAppSelector(selectTheme);
 
   useEffect(() => {
+    console.log(data);
     if (data) dispatch(setAppConfig(data));
   }, [data])
 
+  useEffect(() => {
+    if (!isLoading) SplashScreen.hide();
+  }, [isLoading])
+
   return (
-    <Text>{theme}</Text>
+    <Text style={{ fontFamily: "Poppins-Black", fontSize: 50 }}>{theme}</Text>
   )
 }
 
